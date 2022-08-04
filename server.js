@@ -1,18 +1,18 @@
 require('dotenv').config();
-
 const express = require("express");
-
-const config = require("./src/config/config");
-
+const config = require('./src/config/config');
+const cookieParser = require('cookie-parser');
+const { sequelize } = require('./src/models');
 const app = express();
 
 
-app.listen(config.app_port);
-
-console.log(`Server funguje na porte ${config.app_port}`);
-
 app.use(express.json({
-    type:['application/json','text/plains']
+    type:['application/json', 'text/plain']
 }));
 
 
+sequelize.sync()
+    .then((result) => {
+        app.listen(config.app_port)
+        console.log(`Server is running at port ${config.app_port}`);
+    }); 

@@ -7,8 +7,10 @@ module.exports = {
         options: {
             dialect: process.env.DB_DIALECT,
             host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-        },
-        jwt_secret: process.env.JWT_SECRET
+            port: process.env.DB_PORT
+        }
+    },
+    authentication: {
+        jwtSecret: process.env.JWT_SECRET
     }
 }
