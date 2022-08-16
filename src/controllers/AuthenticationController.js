@@ -69,4 +69,29 @@ module.exports = {
         res.clearCookie("token")
         res.status(200).send({message: "Logout successful."})
     },
+    async deleteUser (req, res) {
+            try {
+                const deleteRegisteredUser = await User.destroy({
+                    where: {
+                        username: req.body.username
+                    }
+                })
+    
+                if(!deleteRegisteredUser){
+                    return res.status(404).send({
+                        error: "User with this username was not found."
+                    })
+                }
+                return res.status(200).send({
+                    message: "User successfully deleted."
+                })
+            }
+            
+            catch (err) {
+                console.log(err)
+                res.status(500).send({
+                    error: "Error while deleting user, try it again later." 
+                })
+            }
+    },
 }

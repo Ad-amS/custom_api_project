@@ -6,6 +6,9 @@ module.exports = (app) => {
     app.get('/api/logout', 
     AuthenticationController.logout),
 
+    app.delete('/api/deleteUser', 
+    AuthenticationController.deleteUser),
+
     app.post('/api/login', 
     AuthenticationController.login),
 
