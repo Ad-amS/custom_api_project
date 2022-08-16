@@ -9,6 +9,7 @@ app.use(express.json({
     type:['application/json', 'text/plain']
 }));
 
+app.use(cookieParser());
 require('./src/routes')(app)
 
 sequelize.sync()

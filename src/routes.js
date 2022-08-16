@@ -1,9 +1,16 @@
 const CoursesController = require('./controllers/CoursesController');
-;
+const AuthenticationController = require('./controllers/AuthenticationController');
 
 module.exports = (app) => {
-    /******** COURSES *******/
+    /******** AUTHENTICATION *******/
+    app.get('/api/logout', 
+    AuthenticationController.logout),
 
+    app.post('/api/login', 
+    AuthenticationController.login),
+
+    app.post('/api/register', 
+    AuthenticationController.register),
 
     /******** COURSES *******/
     app.get('/api/courses',
