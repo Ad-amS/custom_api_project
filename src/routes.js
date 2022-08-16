@@ -1,5 +1,6 @@
 const CoursesController = require('./controllers/CoursesController');
 const AuthenticationController = require('./controllers/AuthenticationController');
+const AuthorisationController = require("./controllers/AuthorisationController");
 
 module.exports = (app) => {
     /******** AUTHENTICATION *******/
@@ -17,14 +18,18 @@ module.exports = (app) => {
 
     /******** COURSES *******/
     app.get('/api/courses',
+    AuthorisationController.validateLogin,
     CoursesController.index)
 
     app.post('/api/courses',
+    AuthorisationController.validateLogin,
     CoursesController.post)
 
     app.put('/api/courses',
+    AuthorisationController.validateLogin,
     CoursesController.put)
 
     app.delete('/api/courses',
+    AuthorisationController.validateLogin,
     CoursesController.delete)
 }
