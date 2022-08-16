@@ -1,7 +1,7 @@
 const {User} = require("../models")
 const jwt = require("jsonwebtoken")
 const config = require("../config/config")
-const {response} = require("express")
+const { response } = require("express")
 
 function jwtSignUser (user) {
     const ONE_HOUR = 60*60 //seconds time minutes
@@ -15,7 +15,7 @@ module.exports = {
         try {
             const user = await User.create(req.body)
             const userJson = user.toJSON()
-            res.status(201).sent({
+            res.status(201).send({
                message: "User registered succesfully." 
             })
         } catch (err) {
